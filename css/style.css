@@ -58,7 +58,7 @@ body {
 }
 
 .titulo {
-  font-family: 'Playfair Display', georgia;
+  font-family: 'Playfair Display SC', georgia;
   font-size: 6rem;
   line-height: 1;
   font-weight: 400;
@@ -94,6 +94,10 @@ body {
   height: 370px;
   overflow-y: scroll;
   grid-column: 2;
+}
+
+.animais-lista li {
+  cursor: pointer;
 }
 
 .animais-lista::-webkit-scrollbar {
@@ -207,17 +211,51 @@ body {
   }
 }
 
-.js-tabcontent section {
+.js .js-tabcontent section {
   display: none;
 }
 
 .js-tabcontent section.ativo {
   display: block !important;
+  animation: show .5s forwards;
 }
 
 @keyframes show {
   from {
     opacity: 0;
-    
+    transform: translate3d(-30px, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.js .js-accordion dd {
+  display: none;
+}
+
+.js-accordion dt::after {
+  content: '⬎';
+  margin-left: 10px;
+}
+
+.js-accordion dt.ativo::after {
+  content: '⬏';
+}
+
+.js-accordion dd.ativo {
+  display: block;
+  animation: slideDown .5s forwards;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    max-height: 0;
+  }
+  to {
+    max-height: 200px;
+    opacity: 1;
   }
 }
